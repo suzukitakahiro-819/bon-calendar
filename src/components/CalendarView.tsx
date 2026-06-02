@@ -5,8 +5,9 @@ import listPlugin from '@fullcalendar/list'
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import interactionPlugin from '@fullcalendar/interaction'
 import jaLocale from '@fullcalendar/core/locales/ja'
-import type { CalendarApi } from '@fullcalendar/core'
+import type { CalendarApi, EventSourceFunc } from '@fullcalendar/core'
 import { renderEventContent } from './EventContent'
+import { fetchGoogleCalendarEvents } from '../lib/fetchGoogleCalendarEvents'
 
 type ViewType = 'listMonth' | 'dayGridMonth'
 
@@ -20,6 +21,23 @@ type CalendarViewProps = {
 export function CalendarView({ currentView }: CalendarViewProps) {
   const calendarRef = useRef<FullCalendar>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
+
+  const loadEvents: EventSourceFunc = (fetchInfo, successCallback, failureCallback) => {
+    fetchGoogleCalendarEvents(
+      calendarId,
+      apiKey,
+      fetchInfo.start,
+      fetchInfo.end,
+    )
+      .then((events) => {
+        setLoadError(null)
+        successCallback(events)
+      })
+      .catch((error: Error) => {
+        setLoadError(error.message)
+        failureCallback(error)
+      })
+  }
 
   useEffect(() => {
     const calendarApi: CalendarApi | undefined =
@@ -61,7 +79,7 @@ export function CalendarView({ currentView }: CalendarViewProps) {
           right: '',
         }}
         googleCalendarApiKey={apiKey}
-        events={{ googleCalendarId: calendarId }}
+        events={loadEvents}
         height="auto"
         navLinks
         nowIndicator

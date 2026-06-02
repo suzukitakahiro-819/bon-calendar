@@ -1,10 +1,12 @@
+import { GOOGLE_EVENT_COLORS } from '../lib/googleCalendarColors'
+
 const LEGEND_ITEMS = [
-  { color: '#16a34a', label: '右近屋系大イベント・合宿' },
-  { color: '#2563eb', label: '主催イベント' },
-  { color: '#ca8a04', label: 'お呼ばれイベント' },
-  { color: '#ea580c', label: '野良盆' },
-  { color: '#dc2626', label: '野良盆［確定］' },
-  { color: '#9333ea', label: '練習会' },
+  { colorId: '10', label: '右近屋系大イベント・合宿' },
+  { colorId: '9', label: '主催イベント' },
+  { colorId: '5', label: 'お呼ばれイベント' },
+  { colorId: '6', label: '野良盆' },
+  { colorId: '11', label: '野良盆［確定］' },
+  { colorId: '3', label: '練習会' },
 ] as const
 
 export function Legend() {
@@ -14,7 +16,9 @@ export function Legend() {
         <li key={item.label} className="legend-item">
           <span
             className="legend-color"
-            style={{ backgroundColor: item.color }}
+            style={{
+              backgroundColor: GOOGLE_EVENT_COLORS[item.colorId].background,
+            }}
             aria-hidden="true"
           />
           <span>{item.label}</span>
