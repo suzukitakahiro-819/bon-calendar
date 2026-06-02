@@ -1,0 +1,66 @@
+import { useEffect, useRef } from 'react'
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import listPlugin from '@fullcalendar/list'
+import googleCalendarPlugin from '@fullcalendar/google-calendar'
+import interactionPlugin from '@fullcalendar/interaction'
+import jaLocale from '@fullcalendar/core/locales/ja'
+import type { CalendarApi } from '@fullcalendar/core'
+
+type ViewType = 'listMonth' | 'dayGridMonth'
+
+const apiKey = import.meta.env.VITE_GOOGLE_CALENDAR_API_KEY
+const calendarId = import.meta.env.VITE_GOOGLE_CALENDAR_ID
+
+type CalendarViewProps = {
+  currentView: ViewType
+}
+
+export function CalendarView({ currentView }: CalendarViewProps) {
+  const calendarRef = useRef<FullCalendar>(null)
+
+  useEffect(() => {
+    const calendarApi: CalendarApi | undefined =
+      calendarRef.current?.getApi()
+    calendarApi?.changeView(currentView)
+  }, [currentView])
+
+  if (!apiKey || !calendarId) {
+    return (
+      <div className="config-error">
+        <p>
+          環境変数 <code>VITE_GOOGLE_CALENDAR_API_KEY</code> と{' '}
+          <code>VITE_GOOGLE_CALENDAR_ID</code> を設定してください。
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="calendar-wrapper">
+      <FullCalendar
+        ref={calendarRef}
+        plugins={[
+          dayGridPlugin,
+          listPlugin,
+          googleCalendarPlugin,
+          interactionPlugin,
+        ]}
+        initialView="listMonth"
+        locale={jaLocale}
+        headerToolbar={{
+          left: 'prev,next today',
+          center: 'title',
+          right: '',
+        }}
+        googleCalendarApiKey={apiKey}
+        events={{ googleCalendarId: calendarId }}
+        height="auto"
+        navLinks
+        nowIndicator
+        eventDisplay="block"
+        dayMaxEvents
+      />
+    </div>
+  )
+}

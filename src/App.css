@@ -1,0 +1,160 @@
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem 1rem 2rem;
+}
+
+.app-header {
+  margin-bottom: 1.25rem;
+}
+
+.app-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  list-style: none;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.legend-color {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.calendar-wrapper {
+  position: relative;
+}
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.view-toggle button {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #495057;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.view-toggle button + button {
+  border-left: 1px solid #dee2e6;
+}
+
+.view-toggle button:hover {
+  background: #f1f3f5;
+}
+
+.view-toggle button.active {
+  color: #fff;
+  background: #2563eb;
+}
+
+.config-error {
+  padding: 1.5rem;
+  text-align: center;
+  color: #842029;
+  background: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 8px;
+}
+
+.config-error code {
+  font-size: 0.875rem;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+}
+
+/* FullCalendar overrides */
+.calendar-wrapper .fc {
+  font-size: 0.9rem;
+}
+
+.calendar-wrapper .fc-toolbar-title {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+.calendar-wrapper .fc-button {
+  font-size: 0.85rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.calendar-wrapper .fc-list-event-title,
+.calendar-wrapper .fc-event-title {
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 0.75rem 0.5rem 1.5rem;
+  }
+
+  .app-header-top {
+    flex-wrap: wrap;
+  }
+
+  .legend {
+    gap: 0.4rem 0.75rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .legend-item {
+    font-size: 0.78rem;
+  }
+
+  .calendar-wrapper .fc-header-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .calendar-wrapper .fc-toolbar-chunk {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .calendar-wrapper .fc-list-event-time {
+    white-space: nowrap;
+  }
+
+  .calendar-wrapper .fc-list-event-title {
+    word-break: break-word;
+  }
+}
