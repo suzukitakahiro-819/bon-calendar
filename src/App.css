@@ -51,6 +51,13 @@
   border-radius: 3px;
 }
 
+.app-note {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+}
+
 .calendar-wrapper {
   position: relative;
 }

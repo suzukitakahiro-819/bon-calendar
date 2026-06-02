@@ -13,10 +13,13 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="app-header-top">
-          <h1>盆イベントカレンダー</h1>
+          <h1>盆イベントカレンダー(ぼんかれ)</h1>
           <ViewToggle currentView={currentView} onChange={setCurrentView} />
         </div>
         <Legend />
+        <p className="app-note">
+          イベントを追加したい場合は、幹部または Discord の雑談チャンネルまで連絡してください。
+        </p>
       </header>
       <main>
         <CalendarView currentView={currentView} />

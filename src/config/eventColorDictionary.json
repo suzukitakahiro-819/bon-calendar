@@ -1,51 +1,51 @@
 [
   {
     "id": "tentative",
-    "label": "仮イベント",
-    "patterns": ["仮イベント", "(仮)", "（仮）", "仮）"],
-    "background": "#9ca3af",
-    "foreground": "#1d1d1d"
-  },
-  {
-    "id": "confirmed",
-    "label": "みんなで野良盆",
-    "patterns": ["🟥", "みんなで野良盆"],
-    "background": "#dc2626",
-    "foreground": "#ffffff"
-  },
-  {
-    "id": "casual",
-    "label": "野良盆",
-    "patterns": ["🟠", "野良盆"],
-    "background": "#ea580c",
-    "foreground": "#1d1d1d"
+    "label": "仮",
+    "patterns": ["⬜", "⚪", "仮イベント", "(仮)", "（仮）", "仮）"],
+    "background": "#aeb4c0",
+    "foreground": "#2b2f36"
   },
   {
     "id": "major",
-    "label": "右近屋系大イベント・合宿",
-    "patterns": ["🟢", "合宿", "納涼"],
-    "background": "#16a34a",
-    "foreground": "#ffffff"
-  },
-  {
-    "id": "practice",
-    "label": "練習会",
-    "patterns": ["🟣", "練習"],
-    "background": "#9333ea",
+    "label": "大イベント・合宿",
+    "patterns": ["🟥", "🔴", "合宿", "納涼", "大イベント"],
+    "background": "#d94b4b",
     "foreground": "#ffffff"
   },
   {
     "id": "hosted",
     "label": "主催イベント",
-    "patterns": ["🟦", "五月祭", "駒場祭", "主催"],
-    "background": "#2563eb",
-    "foreground": "#ffffff"
+    "patterns": ["🟧", "🟠", "五月祭", "駒場祭", "主催"],
+    "background": "#e38d3f",
+    "foreground": "#1d1d1d"
   },
   {
     "id": "invited",
     "label": "お呼ばれイベント",
-    "patterns": ["🟡", "お呼ばれ"],
-    "background": "#ca8a04",
+    "patterns": ["🟨", "🟡", "お呼ばれ"],
+    "background": "#facc15",
     "foreground": "#1d1d1d"
+  },
+  {
+    "id": "everyone-bon",
+    "label": "みんなで野良盆",
+    "patterns": ["🟩", "🟢", "みんなで野良盆"],
+    "background": "#4ea64e",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "practice",
+    "label": "練習会",
+    "patterns": ["🟦", "🔵", "練習会", "練習"],
+    "background": "#3b75c7",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "other",
+    "label": "その他",
+    "patterns": ["🟪", "🟣"],
+    "background": "#8b6fe0",
+    "foreground": "#ffffff"
   }
 ]
