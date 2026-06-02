@@ -1,0 +1,51 @@
+[
+  {
+    "id": "tentative",
+    "label": "仮イベント",
+    "patterns": ["仮イベント", "(仮)", "（仮）", "仮）"],
+    "background": "#9ca3af",
+    "foreground": "#1d1d1d"
+  },
+  {
+    "id": "confirmed",
+    "label": "みんなで野良盆",
+    "patterns": ["🟥", "みんなで野良盆"],
+    "background": "#dc2626",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "casual",
+    "label": "野良盆",
+    "patterns": ["🟠", "野良盆"],
+    "background": "#ea580c",
+    "foreground": "#1d1d1d"
+  },
+  {
+    "id": "major",
+    "label": "右近屋系大イベント・合宿",
+    "patterns": ["🟢", "合宿", "納涼"],
+    "background": "#16a34a",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "practice",
+    "label": "練習会",
+    "patterns": ["🟣", "練習"],
+    "background": "#9333ea",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "hosted",
+    "label": "主催イベント",
+    "patterns": ["🟦", "五月祭", "駒場祭", "主催"],
+    "background": "#2563eb",
+    "foreground": "#ffffff"
+  },
+  {
+    "id": "invited",
+    "label": "お呼ばれイベント",
+    "patterns": ["🟡", "お呼ばれ"],
+    "background": "#ca8a04",
+    "foreground": "#1d1d1d"
+  }
+]

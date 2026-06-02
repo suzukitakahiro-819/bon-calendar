@@ -87,6 +87,16 @@ export function CalendarView({ currentView }: CalendarViewProps) {
         displayEventTime
         dayMaxEvents={3}
         eventContent={renderEventContent}
+        eventDidMount={(info) => {
+          const { backgroundColor, borderColor, textColor } = info.event
+          if (backgroundColor) {
+            info.el.style.backgroundColor = backgroundColor
+            info.el.style.borderColor = borderColor || backgroundColor
+          }
+          if (textColor) {
+            info.el.style.color = textColor
+          }
+        }}
         eventSourceFailure={(error) => {
           const message =
             error?.message ??

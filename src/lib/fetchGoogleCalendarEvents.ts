@@ -1,10 +1,9 @@
 import type { EventInput } from '@fullcalendar/core'
-import { getEventColors } from './googleCalendarColors'
+import { resolveEventColorFromTitle } from './resolveEventColor'
 
 type GoogleCalendarEventItem = {
   id: string
   summary?: string
-  colorId?: string
   htmlLink?: string
   location?: string
   description?: string
@@ -31,15 +30,16 @@ function buildEventsUrl(calendarId: string, apiKey: string, start: Date, end: Da
 }
 
 function toEventInput(item: GoogleCalendarEventItem): EventInput {
-  const colors = getEventColors(item.colorId)
+  const title = item.summary ?? '(タイトルなし)'
+  const colors = resolveEventColorFromTitle(title)
 
   return {
     id: item.id,
-    title: item.summary ?? '(タイトルなし)',
+    title,
     start: item.start.dateTime ?? item.start.date ?? '',
     end: item.end.dateTime ?? item.end.date,
     url: item.htmlLink,
-    ...colors,
+    ...(colors ?? {}),
   }
 }
 
