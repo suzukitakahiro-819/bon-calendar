@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import listPlugin from '@fullcalendar/list'
@@ -6,6 +6,7 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar'
 import interactionPlugin from '@fullcalendar/interaction'
 import jaLocale from '@fullcalendar/core/locales/ja'
 import type { CalendarApi } from '@fullcalendar/core'
+import { renderEventContent } from './EventContent'
 
 type ViewType = 'listMonth' | 'dayGridMonth'
 
@@ -18,6 +19,7 @@ type CalendarViewProps = {
 
 export function CalendarView({ currentView }: CalendarViewProps) {
   const calendarRef = useRef<FullCalendar>(null)
+  const [loadError, setLoadError] = useState<string | null>(null)
 
   useEffect(() => {
     const calendarApi: CalendarApi | undefined =
@@ -38,6 +40,11 @@ export function CalendarView({ currentView }: CalendarViewProps) {
 
   return (
     <div className="calendar-wrapper">
+      {loadError && (
+        <div className="config-error">
+          <p>{loadError}</p>
+        </div>
+      )}
       <FullCalendar
         ref={calendarRef}
         plugins={[
@@ -46,7 +53,7 @@ export function CalendarView({ currentView }: CalendarViewProps) {
           googleCalendarPlugin,
           interactionPlugin,
         ]}
-        initialView="listMonth"
+        initialView="dayGridMonth"
         locale={jaLocale}
         headerToolbar={{
           left: 'prev,next today',
@@ -59,7 +66,15 @@ export function CalendarView({ currentView }: CalendarViewProps) {
         navLinks
         nowIndicator
         eventDisplay="block"
-        dayMaxEvents
+        displayEventTime
+        dayMaxEvents={3}
+        eventContent={renderEventContent}
+        eventSourceFailure={(error) => {
+          const message =
+            error?.message ??
+            'Google Calendar からイベントを取得できませんでした。'
+          setLoadError(message)
+        }}
       />
     </div>
   )

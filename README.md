@@ -53,8 +53,10 @@ npm run dev
 1. [Google Cloud Console](https://console.cloud.google.com/) にアクセスし、プロジェクトを作成（または既存のプロジェクトを選択）します。
 2. **API とサービス** → **ライブラリ** から **Google Calendar API** を有効にします。
 3. **API とサービス** → **認証情報** → **認証情報を作成** → **API キー** を選択して API キーを作成します。
-4. 作成した API キーの **アプリケーションの制限** で **HTTP リファラー** を設定し、本番サイトの URL（例: `https://<username>.github.io/bon-calendar/*`）を追加することを推奨します。
-5. ローカル開発用に `http://localhost:5173/*` も追加しておくと便利です。
+4. 作成した API キーの **アプリケーションの制限** で **HTTP リファラー** を設定し、以下を追加します。
+   - `https://<username>.github.io/*`（本番サイト）
+   - `http://localhost:5173/*`（ローカル開発）
+   - `/bon-calendar/` だけに限定すると referer 不一致でブロックされることがあるため、`.github.io/*` 全体を許可するのが確実です。
 
 ### カレンダー ID の確認
 

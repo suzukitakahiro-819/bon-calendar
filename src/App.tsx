@@ -7,7 +7,7 @@ import './App.css'
 type ViewType = 'listMonth' | 'dayGridMonth'
 
 function App() {
-  const [currentView, setCurrentView] = useState<ViewType>('listMonth')
+  const [currentView, setCurrentView] = useState<ViewType>('dayGridMonth')
 
   return (
     <div className="app">

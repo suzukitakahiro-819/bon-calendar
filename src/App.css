@@ -116,9 +116,41 @@
   padding: 0.35rem 0.65rem;
 }
 
-.calendar-wrapper .fc-list-event-title,
-.calendar-wrapper .fc-event-title {
+.event-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  overflow: hidden;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.event-content-time {
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.event-content-title {
+  font-size: 0.78rem;
   font-weight: 500;
+  word-break: break-word;
+}
+
+.calendar-wrapper .fc-daygrid-event {
+  white-space: normal;
+}
+
+.calendar-wrapper .fc-daygrid-event .fc-event-main {
+  padding: 1px 2px;
+}
+
+.calendar-wrapper .fc-list-event .fc-list-event-time {
+  display: none;
+}
+
+.calendar-wrapper .fc-list-event .fc-list-event-title {
+  width: 100%;
 }
 
 @media (max-width: 640px) {
@@ -136,7 +168,51 @@
   }
 
   .legend-item {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.1rem;
+  }
+
+  .view-toggle button {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.75rem;
+  }
+
+  .calendar-wrapper .fc {
+    font-size: 0.72rem;
+  }
+
+  .calendar-wrapper .fc-toolbar-title {
+    font-size: 0.9rem;
+  }
+
+  .calendar-wrapper .fc-button {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.45rem;
+  }
+
+  .calendar-wrapper .fc-col-header-cell-cushion {
+    font-size: 0.68rem;
+    padding: 2px;
+  }
+
+  .calendar-wrapper .fc-daygrid-day-number {
+    font-size: 0.72rem;
+    padding: 2px 4px;
+  }
+
+  .calendar-wrapper .fc-daygrid-day-frame {
+    min-height: 5rem;
+  }
+
+  .event-content-time {
+    font-size: 0.62rem;
+  }
+
+  .event-content-title {
+    font-size: 0.65rem;
   }
 
   .calendar-wrapper .fc-header-toolbar {
@@ -148,10 +224,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-  }
-
-  .calendar-wrapper .fc-list-event-time {
-    white-space: nowrap;
   }
 
   .calendar-wrapper .fc-list-event-title {

@@ -30,6 +30,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify secrets
+        run: |
+          if [ -z "$VITE_GOOGLE_CALENDAR_API_KEY" ] || [ -z "$VITE_GOOGLE_CALENDAR_ID" ]; then
+            echo "::error::GitHub Secrets が未設定です。"
+            echo "Settings → Secrets and variables → Actions で以下を登録してください:"
+            echo "  - VITE_GOOGLE_CALENDAR_API_KEY"
+            echo "  - VITE_GOOGLE_CALENDAR_ID"
+            exit 1
+          fi
+        env:
+          VITE_GOOGLE_CALENDAR_API_KEY: ${{ secrets.VITE_GOOGLE_CALENDAR_API_KEY }}
+          VITE_GOOGLE_CALENDAR_ID: ${{ secrets.VITE_GOOGLE_CALENDAR_ID }}
+
       - name: Build
         run: npm run build
         env:
